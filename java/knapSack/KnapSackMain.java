@@ -5,6 +5,7 @@ package knapSack;
 import java.util.ArrayList;
 import knapSack.Algo.GreedyAlgo;
 import knapSack.Algo.LocalSearch;
+import knapSack.Algo.SimulationgAnealing;
 import knapSack.Utils.ItemProvider;
 import knapSack.Utils.KnapSackProvider;
 import knapSack.models.Item;
@@ -39,7 +40,16 @@ public class KnapSackMain {
        System.out.println("number of items "+result.getNumberOfItems());
        System.out.printf("total value in knapsack %.3f \n",result.getTotalValue());
        System.out.println("============");
-      
+
+        System.out.println("\nSimulated Anealing Solution:");
+        KnapSack knapSak3 = KnapSackProvider.createKnapSack((5*numberOfItems)/4.0);
+        KnapSack result2 =  SimulationgAnealing.solve(items, knapSak3, 10000, 0.995, 100000);
+        System.out.println("============");
+        System.out.println("knapsack Capacity "+result2.getCapacity());
+        System.out.printf("total weight in knapsack %.3f \n",result2.getTotalWeight());
+        System.out.println("number of items "+result2.getNumberOfItems());
+        System.out.printf("total value in knapsack %.3f \n",result2.getTotalValue());
+        System.out.println("============");
     }
 }
 
